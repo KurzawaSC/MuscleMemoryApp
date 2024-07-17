@@ -13,15 +13,18 @@
 
             <VerticalStackLayout Grid.Row="2">
                 <Frame Style="{StaticResource EntryFrame}">
-                    <Entry Text="Name" Style="{StaticResource CommonEntry}"/>
+                    <Entry Placeholder="Name" Style="{StaticResource CommonEntry}"
+                           Text="{Binding _newExercise.Name}"/>
                 </Frame>
 
                 <Frame Style="{StaticResource EntryFrame}">
-                    <Entry  Text="Weight" Style="{StaticResource CommonEntry}"/>
+                <Entry  Placeholder="Weight" Style="{StaticResource CommonEntry}"
+                        Text="{Binding _newExercise.Weight}"/>
                 </Frame>
 
                 <Frame Style="{StaticResource EntryFrame}">
-                    <Entry  Text="Reps" Style="{StaticResource CommonEntry}"/>
+                <Entry  Placeholder="Reps" Style="{StaticResource CommonEntry}"
+                        Text="{Binding _newExercise.Reps}"/>
                 </Frame>
 
                 <Frame Margin="0,15,0,0" Style="{StaticResource ButtonFrame}">
@@ -33,11 +36,11 @@
 
             <VerticalStackLayout Grid.Row="3">
             <Frame Margin="0,15,0,0" Style="{StaticResource ButtonFrame}">
-                <Button Text="Confirm" Style="{StaticResource RedButton}"/>
+                <Button Text="Confirm" Style="{StaticResource RedButton}" Clicked="Confirm_Clicked"/>
             </Frame>
 
             <Frame Margin="0,15,0,0" Style="{StaticResource ButtonFrame}">
-                <Button Text="Cancel" Style="{StaticResource GreyButton}" />
+                <Button Text="Cancel" Style="{StaticResource GreyButton}" Clicked="Cancel_Clicked"/>
             </Frame>
 
         </VerticalStackLayout>

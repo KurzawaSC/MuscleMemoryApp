@@ -28,16 +28,10 @@ public class ExerciseViewModel
 
     private async void InitializeAsync()
     {
-        exercises = await GetAllExercise();
+        await GetAllExercise();
     }
 
-    public ICommand GetAllExerciseCommand =>
-        new Command(async () =>
-        {
-            exercises = await GetAllExercise();
-        });
-
-    public async Task<ObservableCollection<Exercise>> GetAllExercise()
+    public async Task GetAllExercise()
     {
         client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
         var response = await client.GetAsync($"{baseUrl}/api/exercises?searchPhrase=");
@@ -48,12 +42,8 @@ public class ExerciseViewModel
                 await response.Content.ReadAsStreamAsync())
             {
                 var data = await JsonSerializer.DeserializeAsync<ObservableCollection<Exercise>>(responseStream, serializerOptions);
-                return data!;
+                exercises = data!;
             }
-        }
-        else
-        {
-            return exercises;
         }
     }
 }

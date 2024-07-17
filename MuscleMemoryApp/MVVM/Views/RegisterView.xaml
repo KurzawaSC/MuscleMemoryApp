@@ -14,31 +14,34 @@
         <ScrollView Grid.Row="2">
             <VerticalStackLayout>
                 <Frame Style="{StaticResource EntryFrame}">
-                    <Entry Text="Name" Style="{StaticResource CommonEntry}"/>
+                    <Entry Placeholder="Name" Style="{StaticResource CommonEntry}"/>
                 </Frame>
 
                 <Frame Style="{StaticResource EntryFrame}">
-                    <Entry  Text="Last Name" Style="{StaticResource CommonEntry}"/>
+                    <Entry  Placeholder="Last Name" Style="{StaticResource CommonEntry}"/>
                 </Frame>
 
                 <Frame Style="{StaticResource EntryFrame}">
-                    <Entry  Text="E-mail" Style="{StaticResource CommonEntry}"/>
+                    <Entry  Placeholder="E-mail" Style="{StaticResource CommonEntry}"
+                            Text="{Binding request.email}"/>
                 </Frame>
 
                 <Frame Style="{StaticResource EntryFrame}">
-                    <Entry  Text="Password" Style="{StaticResource CommonEntry}"/>
+                    <Entry  Placeholder="Password" Style="{StaticResource CommonEntry}"
+                            IsPassword="True" Text="{Binding request.password}"/>
                 </Frame>
 
                 <Frame Style="{StaticResource EntryFrame}">
-                    <Entry  Text="Repeat password" Style="{StaticResource CommonEntry}"/>
+                    <Entry  Placeholder="Repeat password" Style="{StaticResource CommonEntry}"
+                            IsPassword="True"/>
                 </Frame>
 
                 <Frame Style="{StaticResource EntryFrame}">
-                    <Entry  Text="Weight (kg)" Style="{StaticResource CommonEntry}"/>
+                    <Entry  Placeholder="Weight (kg)" Style="{StaticResource CommonEntry}"/>
                 </Frame>
 
                 <Frame Style="{StaticResource EntryFrame}">
-                    <Entry  Text="Height (cm)" Style="{StaticResource CommonEntry}"/>
+                    <Entry  Placeholder="Height (cm)" Style="{StaticResource CommonEntry}"/>
                 </Frame>
 
                 <Grid ColumnDefinitions="*,*" Margin="15">
@@ -59,11 +62,11 @@
 
         <VerticalStackLayout Grid.Row="3">
             <Frame Margin="0,15,0,0" Style="{StaticResource ButtonFrame}">
-                <Button Text="Confirm" Style="{StaticResource RedButton}"/>
+                <Button Text="Confirm" Style="{StaticResource RedButton}" Clicked="Confirm_Clicked"/>
             </Frame>
 
             <Frame Margin="0,15,0,0" Style="{StaticResource ButtonFrame}">
-                <Button Text="Cancel" Style="{StaticResource GreyButton}" />
+                <Button Text="Cancel" Style="{StaticResource GreyButton}" Clicked="Cancel_Clicked"/>
             </Frame>
 
         </VerticalStackLayout>

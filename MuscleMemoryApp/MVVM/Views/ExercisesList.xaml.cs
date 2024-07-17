@@ -5,11 +5,20 @@ namespace MuscleMemoryApp.MVVM.Views;
 public partial class ExercisesList : ContentPage
 {
     string token;
+    ExerciseViewModel _viewModel;
 	public ExercisesList(string _token)
 	{
 		InitializeComponent();
-		BindingContext = new ExerciseViewModel(_token);
+		_viewModel = new ExerciseViewModel(_token);
+        BindingContext = _viewModel;
         token = _token;
+    }
+
+    protected override async void OnAppearing()
+    {
+        base.OnAppearing();
+
+        await _viewModel.GetAllExercise();
     }
 
     private async void AddButton_Clicked(object sender, EventArgs e)
