@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xaml-comp compile="true" ?>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <Style TargetType="BoxView" x:Key="HeaderBoxView">
+        <Setter Property="BackgroundColor" Value="#FF4040"/>
+        <Setter Property="CornerRadius" Value="16"/>
+    </Style>
+
+    <Style TargetType="Label" x:Key="HeaderLabel">
+        <Setter Property="FontFamily" Value="HeaderFont"/>
+        <Setter Property="FontSize" Value="24"/>
+        <Setter Property="TextColor" Value="White"/>
+        <Setter Property="Text" Value="MuscleMemory"/>
+        <Setter Property="HorizontalOptions" Value="Center"/>
+        <Setter Property="VerticalOptions" Value="Center"/>
+    </Style>
+
+    <Style TargetType="Image" x:Key="SelectPageIcon">
+        <Setter Property="WidthRequest" Value="35"/>
+        <Setter Property="HeightRequest" Value="35"/>
+        <Setter Property="HorizontalOptions" Value="Center"/>
+        <Setter Property="VerticalOptions" Value="Center"/>
+    </Style>
+
+    <Style TargetType="Frame" x:Key="SelectPageIconsFrame">
+        <Setter Property="BorderColor" Value="#FF4040"/>
+        <Setter Property="CornerRadius" Value="16"/>
+    </Style>
+
+    <Style TargetType="Label" x:Key="MainLabel">
+        <Setter Property="FontFamily" Value="CommonFont"/>
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="FontAttributes" Value="Bold"/>
+        <Setter Property="VerticalOptions" Value="Center"/>
+        <Setter Property="HorizontalOptions" Value="Center"/>
+    </Style>
+    
+</ResourceDictionary>

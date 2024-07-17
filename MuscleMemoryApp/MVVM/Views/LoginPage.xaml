@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:skia="clr-namespace:SkiaSharp.Extended.UI.Controls;assembly=SkiaSharp.Extended.UI"
+             x:Class="MuscleMemoryApp.MVVM.Views.LoginPage"
+             Title="LoginPage"
+             NavigationPage.HasNavigationBar="False">
+
+    <Grid RowDefinitions=".1*, .1*, .25*, .25*, .3*" BackgroundColor="White">
+        <BoxView Style="{StaticResource HeaderBoxView}" />
+        <Label Style="{StaticResource HeaderLabel}"/>
+
+        <Label Text="Welcome!" Grid.Row="1" Style="{StaticResource MainLabel}"/>
+
+        <VerticalStackLayout Grid.Row="2">
+            <Frame Style="{StaticResource EntryFrame}">
+                <Entry Text="{Binding eMail}" Placeholder="E-mail" Style="{StaticResource CommonEntry}"/>
+            </Frame>
+
+            <Frame Style="{StaticResource EntryFrame}">
+                <Entry  Text="{Binding password}" IsPassword="True" Placeholder="Password" Style="{StaticResource CommonEntry}"/>
+            </Frame>
+        </VerticalStackLayout>
+
+        <VerticalStackLayout Grid.Row="3">
+            <Frame Style="{StaticResource ButtonFrame}">
+                <Button Text="Log in" Style="{StaticResource RedButton}"
+                        Clicked="OnSomeEvent"/>
+            </Frame>
+
+            <Label Text="Don't have an account?" TextColor="Black" FontFamily="LightFont" HorizontalOptions="Center"
+                   FontSize="13" Opacity="0.9" Margin="0,15,0,0"/>
+            <Frame Style="{StaticResource ButtonFrame}">
+                <Button Text="Sign in" Style="{StaticResource GreyButton}" Clicked="Sign_In"/>
+            </Frame>
+            
+        </VerticalStackLayout>
+
+        <skia:SKLottieView Grid.Row="4" IsAnimationEnabled="True" RepeatCount="-1" Source="LoginAnimation.json"/>
+
+    </Grid>
+    
+</ContentPage>

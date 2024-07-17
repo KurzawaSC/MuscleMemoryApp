@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MuscleMemoryApp.MVVM.Views.RegisterView"
+             Title="RegisterView"
+             NavigationPage.HasNavigationBar="False">
+
+    <Grid RowDefinitions=".1*, .1*, .55*, .25*" BackgroundColor="White">
+        <BoxView Style="{StaticResource HeaderBoxView}" />
+        <Label Style="{StaticResource HeaderLabel}"/>
+
+        <Label Text="Register" Grid.Row="1" Style="{StaticResource MainLabel}"/>
+
+        <ScrollView Grid.Row="2">
+            <VerticalStackLayout>
+                <Frame Style="{StaticResource EntryFrame}">
+                    <Entry Text="Name" Style="{StaticResource CommonEntry}"/>
+                </Frame>
+
+                <Frame Style="{StaticResource EntryFrame}">
+                    <Entry  Text="Last Name" Style="{StaticResource CommonEntry}"/>
+                </Frame>
+
+                <Frame Style="{StaticResource EntryFrame}">
+                    <Entry  Text="E-mail" Style="{StaticResource CommonEntry}"/>
+                </Frame>
+
+                <Frame Style="{StaticResource EntryFrame}">
+                    <Entry  Text="Password" Style="{StaticResource CommonEntry}"/>
+                </Frame>
+
+                <Frame Style="{StaticResource EntryFrame}">
+                    <Entry  Text="Repeat password" Style="{StaticResource CommonEntry}"/>
+                </Frame>
+
+                <Frame Style="{StaticResource EntryFrame}">
+                    <Entry  Text="Weight (kg)" Style="{StaticResource CommonEntry}"/>
+                </Frame>
+
+                <Frame Style="{StaticResource EntryFrame}">
+                    <Entry  Text="Height (cm)" Style="{StaticResource CommonEntry}"/>
+                </Frame>
+
+                <Grid ColumnDefinitions="*,*" Margin="15">
+                    <Label Text="Date Of Birth" FontSize="20" FontFamily="CommonFont"
+                               VerticalOptions="Center" HorizontalOptions="Center"/>
+                    <DatePicker Grid.Column="1" Style="{StaticResource PickerStyle}"/>
+                </Grid>
+
+                <Grid Margin="15" ColumnDefinitions="*,*">
+                    <Label Text="Sex" FontSize="20" FontFamily="CommonFont"
+                           VerticalOptions="Center" HorizontalOptions="Center"/>
+                    <Picker Grid.Column="1" ItemsSource="{Binding sexes}"/>
+                </Grid>
+
+            </VerticalStackLayout>
+        </ScrollView>
+        
+
+        <VerticalStackLayout Grid.Row="3">
+            <Frame Margin="0,15,0,0" Style="{StaticResource ButtonFrame}">
+                <Button Text="Confirm" Style="{StaticResource RedButton}"/>
+            </Frame>
+
+            <Frame Margin="0,15,0,0" Style="{StaticResource ButtonFrame}">
+                <Button Text="Cancel" Style="{StaticResource GreyButton}" />
+            </Frame>
+
+        </VerticalStackLayout>
+
+    </Grid>
+
+</ContentPage>

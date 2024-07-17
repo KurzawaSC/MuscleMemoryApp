@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xaml-comp compile="true" ?>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <Style TargetType="Frame" x:Key="ExerciseImageFrame">
+        <Setter Property="BackgroundColor" Value="Black"/>
+        <Setter Property="CornerRadius" Value="35"/>
+        <Setter Property="HasShadow" Value="True"/>
+        <Setter Property="Grid.Column" Value="1"/>
+        <Setter Property="Grid.RowSpan" Value="2"/>
+        <Setter Property="HeightRequest" Value="70"/>
+        <Setter Property="WidthRequest" Value="70"/>
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="Margin" Value="15,0,0,0"/>
+        <Setter Property="HorizontalOptions" Value="Start"/>
+        <Setter Property="VerticalOptions" Value="Center"/>
+    </Style>
+
+    <Style TargetType="Image" x:Key="ExerciseImage">
+        <Setter Property="Aspect" Value="AspectFill"/>
+        <Setter Property="MinimumHeightRequest" Value="70"/>
+        <Setter Property="MinimumWidthRequest" Value="70"/>
+        <Setter Property="MaximumHeightRequest" Value="70"/>
+        <Setter Property="MaximumWidthRequest" Value="70"/>
+        <Setter Property="HorizontalOptions" Value="Center"/>
+        <Setter Property="VerticalOptions" Value="Center"/>
+    </Style>
+
+</ResourceDictionary>
