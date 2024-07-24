@@ -24,12 +24,12 @@
                                     <Image Source="{Binding Image}" Style="{StaticResource ExerciseImage}"/>
                                 </Frame>
                                 <Button Grid.Column="3" Grid.RowSpan="2" Background="Red" ImageSource="trash.png"
-                                    MaximumHeightRequest="50" MaximumWidthRequest="50"
                                     Clicked="Delete_Clicked"
+                                        MaximumWidthRequest="50" MaximumHeightRequest="50" HorizontalOptions="Center"
                                     CommandParameter="{Binding Id}"/>
                                 <Button Grid.Column="2" Grid.RowSpan="2" Background="LightGreen" ImageSource="edit.png"
-                                     MaximumHeightRequest="50" MaximumWidthRequest="50"
                                     Clicked="Edit_Clicked"
+                                        MaximumWidthRequest="50" MaximumHeightRequest="50" HorizontalOptions="Center"
                                     CommandParameter="{Binding Id}"/>
                             </Grid>
                         </Frame>

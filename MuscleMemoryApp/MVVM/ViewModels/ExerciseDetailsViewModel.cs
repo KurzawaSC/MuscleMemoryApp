@@ -1,20 +1,21 @@
 ﻿using MuscleMemoryApp.MVVM.Models;
+using PropertyChanged;
 using System.Text;
 using System.Text.Json;
 
 namespace MuscleMemoryApp.MVVM.ViewModels;
-
-public class AddExerciseViewModel
+public class ExerciseDetailsViewModel
 {
     HttpClient client;
     string token { get; set; }
     JsonSerializerOptions serializerOptions;
     string baseUrl = "https://localhost:7002";
-    public newExercise _newExercise { get; set; }
+    public ExerciseDetails _newExercise { get; set; }
     public bool hasImage = false;
     FileResult Image = default!;
+    public string message { get; set; }
 
-    public AddExerciseViewModel(string _token)
+    public ExerciseDetailsViewModel(string _token, string _message, ExerciseDetails newExercise = default!)
     {
         client = new HttpClient();
         serializerOptions = new JsonSerializerOptions()
@@ -22,8 +23,14 @@ public class AddExerciseViewModel
             WriteIndented = true,
         };
         token = _token;
-        _newExercise = new newExercise();
-        
+        if (newExercise == default)
+        {
+            _newExercise = new ExerciseDetails();
+        }else
+        {
+            _newExercise = newExercise;
+        }
+        message = _message;
     }
 
     public async Task<string> AddExercise()
@@ -48,6 +55,17 @@ public class AddExerciseViewModel
             }
         }
         return default!;
+    }
+
+    public async Task UpdateExercise(string id)
+    {
+        client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+
+        string json = JsonSerializer.Serialize(_newExercise, serializerOptions);
+
+        StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+
+        var response = await client.PatchAsync($"{baseUrl}/api/exercises/{id}", content);
     }
 
 

@@ -76,7 +76,13 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="MVVM\Views\AddExerciseView.xaml">
+	  <Compile Update="MVVM\Views\ExerciseDetailsView.xaml.cs">
+	    <DependentUpon>ExerciseDetailsView.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="MVVM\Views\ExerciseDetailsView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="MVVM\Views\ExercisesList.xaml">

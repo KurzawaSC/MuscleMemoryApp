@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MuscleMemoryApp.MVVM.Views.AddExerciseView"
+             x:Class="MuscleMemoryApp.MVVM.Views.ExerciseDetailsView"
              Title="AddExerciseView"
              NavigationPage.HasNavigationBar="False">
 
@@ -9,7 +9,7 @@
         <BoxView Style="{StaticResource HeaderBoxView}" />
         <Label Style="{StaticResource HeaderLabel}"/>
 
-        <Label Text="New Exercise" Grid.Row="1" Style="{StaticResource MainLabel}"/>
+        <Label Text="{Binding message}" Grid.Row="1" Style="{StaticResource MainLabel}"/>
 
             <VerticalStackLayout Grid.Row="2">
                 <Frame Style="{StaticResource EntryFrame}">
