@@ -15,6 +15,7 @@ public partial class RegisterView : ContentPage
     private async void Confirm_Clicked(object sender, EventArgs e)
     {
 		await _viewModel.RegisterUser();
+		//await _viewModel.editUserInfo.EditUserInfo();
 		await Navigation.PopAsync();
     }
 

@@ -5,7 +5,7 @@
 
     <DataTemplate x:Key="ExerciseStyle">
         <Frame BackgroundColor="#F5F5F5">
-            <Grid ColumnDefinitions="*,*" RowDefinitions="*,*">
+            <Grid RowDefinitions="*,*" ColumnDefinitions=".4*, .4*, .1*, .1*">
                 <VerticalStackLayout HorizontalOptions="End"
                 VerticalOptions="Center" Margin="0,0,15,0">
                     <Label Text="{Binding Name}" FontSize="20" FontFamily="CommonFont"/>
@@ -14,6 +14,9 @@
                 <Frame Grid.Column="1" Grid.RowSpan="2" Style="{StaticResource ExerciseImageFrame}">
                     <Image Source="{Binding Image}" Style="{StaticResource ExerciseImage}"/>
                 </Frame>
+                <Button Grid.Column="2" Grid.RowSpan="2" Background="Red" ImageSource="trash.png"
+                        MaximumHeightRequest="50" MaximumWidthRequest="50"
+                        CommandParameter="{Binding Id}"/>
             </Grid>
         </Frame>
     </DataTemplate>

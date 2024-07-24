@@ -46,4 +46,11 @@ public class ExerciseViewModel
             }
         }
     }
+
+    public async Task DeleteExercise(string id)
+    {
+        client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+        var response = await client.DeleteAsync($"{baseUrl}/api/exercises/{id}");
+        await GetAllExercise();
+    }
 }

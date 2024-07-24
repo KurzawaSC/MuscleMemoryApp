@@ -9,6 +9,7 @@ public class RegisterViewModel
 {
     public List<string> sexes { get; set; }
     public RegisterRequest request { get; set; }
+    public EditUserInfoViewModel editUserInfo { get; set; }
 
     HttpClient client;
     JsonSerializerOptions serializerOptions;
@@ -26,6 +27,7 @@ public class RegisterViewModel
             WriteIndented = true,
         };
         request = new RegisterRequest();
+        editUserInfo = new EditUserInfoViewModel();
     }
 
     public async Task RegisterUser()
@@ -36,5 +38,11 @@ public class RegisterViewModel
 
 
         var response = await client.PostAsync($"{baseUrl}/api/identity/register", content);
+
+        var responseContent = await response.Content.ReadAsStringAsync();
+        //var registerResponse = JsonSerializer.Deserialize<RegisterResponse>(responseContent, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+        //return registerResponse!.Id;
+
+        //response is empty :(
     }
 }

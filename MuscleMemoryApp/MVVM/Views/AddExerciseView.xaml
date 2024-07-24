@@ -28,7 +28,7 @@
                 </Frame>
 
                 <Frame Margin="0,15,0,0" Style="{StaticResource ButtonFrame}">
-                    <Button Text="Add Image" Style="{StaticResource GreyButton}" />
+                    <Button Text="Add Image" Style="{StaticResource GreyButton}" Clicked="AddImage_Clicked" />
                 </Frame>
 
         </VerticalStackLayout>

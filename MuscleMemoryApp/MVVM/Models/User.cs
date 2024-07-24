@@ -2,6 +2,7 @@
 
 public class User
 {
+    public string UserName { get; set; } = default!;
     public DateOnly? DateOfBirth { get; set; } = default(DateOnly)!;
     public string? Nationality { get; set; } = default!;
     public double? Weight { get; set; } = default!;
