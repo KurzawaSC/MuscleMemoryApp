@@ -14,7 +14,7 @@
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Frame BackgroundColor="#F5F5F5">
-                            <Grid RowDefinitions="*,*" ColumnDefinitions=".4*, .4*, .1*, .1*">
+                            <Grid RowDefinitions="*,*" ColumnDefinitions=".3*, .3*, .2*, .2*">
                                 <VerticalStackLayout HorizontalOptions="End"
             VerticalOptions="Center" Margin="0,0,15,0">
                                     <Label Text="{Binding Name}" FontSize="20" FontFamily="CommonFont"/>

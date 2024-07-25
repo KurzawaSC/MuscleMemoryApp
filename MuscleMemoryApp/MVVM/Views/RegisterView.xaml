@@ -14,12 +14,8 @@
         <ScrollView Grid.Row="2">
             <VerticalStackLayout>
                 <Frame Style="{StaticResource EntryFrame}">
-                    <Entry Placeholder="Name" Style="{StaticResource CommonEntry}"
-                           Text="{Binding request.editUserInfo.user.UserName}"/>
-                </Frame>
-
-                <Frame Style="{StaticResource EntryFrame}">
-                    <Entry  Placeholder="Last Name" Style="{StaticResource CommonEntry}"/>
+                    <Entry Placeholder="Username" Style="{StaticResource CommonEntry}"
+                           Text="{Binding user.UserName}"/>
                 </Frame>
 
                 <Frame Style="{StaticResource EntryFrame}">
@@ -34,24 +30,31 @@
 
                 <Frame Style="{StaticResource EntryFrame}">
                     <Entry  Placeholder="Repeat password" Style="{StaticResource CommonEntry}"
-                            IsPassword="True"/>
+                            IsPassword="True" Text="{Binding repeatedPassword}"/>
                 </Frame>
 
                 <Frame Style="{StaticResource EntryFrame}">
                     <Entry  Placeholder="Weight (kg)" Style="{StaticResource CommonEntry}"
-                            Text="{Binding request.editUserInfo.user.Weight}"/>
+                            Text="{Binding user.Weight}"/>
                 </Frame>
 
                 <Frame Style="{StaticResource EntryFrame}">
                     <Entry  Placeholder="Height (cm)" Style="{StaticResource CommonEntry}"
-                            Text="{Binding request.editUserInfo.user.Height}"/>
+                            Text="{Binding user.Height}"/>
                 </Frame>
 
                 <Grid ColumnDefinitions="*,*" Margin="15">
                     <Label Text="Date Of Birth" FontSize="20" FontFamily="CommonFont"
                                VerticalOptions="Center" HorizontalOptions="Center"/>
                     <DatePicker Grid.Column="1" Style="{StaticResource PickerStyle}"
-                                Date="{Binding request.editUserInfo.user.DateOfBirth}"/>
+                                DateSelected="DatePicker_DateSelected"/>
+                </Grid>
+
+                <Grid Margin="15" ColumnDefinitions="*,*">
+                    <Label Text="Nationality" FontSize="20" FontFamily="CommonFont"
+                            VerticalOptions="Center" HorizontalOptions="Center"/>
+                    <Picker Grid.Column="1" ItemsSource="{Binding nationalities}"
+                            SelectedItem="{Binding user.Nationality}"/>
                 </Grid>
 
                 <Grid Margin="15" ColumnDefinitions="*,*">
