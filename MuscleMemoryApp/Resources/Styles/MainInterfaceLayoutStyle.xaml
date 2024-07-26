@@ -6,7 +6,6 @@
 
     <Style TargetType="BoxView" x:Key="HeaderBoxView">
         <Setter Property="BackgroundColor" Value="#FF4040"/>
-        <Setter Property="CornerRadius" Value="16"/>
     </Style>
 
     <Style TargetType="Label" x:Key="HeaderLabel">
