@@ -36,6 +36,18 @@
         <Setter Property="TextColor" Value="Black"/>
     </Style>
 
+    <Style TargetType="Button" x:Key="SettingsButton">
+        <Setter Property="HorizontalOptions" Value="Center"/>
+        <Setter Property="HeightRequest" Value="49"/>
+        <Setter Property="WidthRequest" Value="200"/>
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="FontFamily" Value="CommonFont"/>
+        <Setter Property="FontAttributes" Value="Bold"/>
+        <Setter Property="BackgroundColor" Value="White"/>
+        <Setter Property="TextColor" Value="Black"/>
+        <Setter Property="ContentLayout" Value="Left, 10" />
+    </Style>
+
     <Style TargetType="Frame" x:Key="ButtonFrame">
         <Setter Property="BorderColor" Value="Black"/>
         <Setter Property="BackgroundColor" Value="White"/>

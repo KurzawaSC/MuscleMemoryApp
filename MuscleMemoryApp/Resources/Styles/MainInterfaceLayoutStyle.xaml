@@ -25,6 +25,13 @@
         <Setter Property="VerticalOptions" Value="Center"/>
     </Style>
 
+    <Style TargetType="Button" x:Key="SelectPageIcon2">
+        <Setter Property="WidthRequest" Value="35"/>
+        <Setter Property="HeightRequest" Value="35"/>
+        <Setter Property="HorizontalOptions" Value="Center"/>
+        <Setter Property="VerticalOptions" Value="Center"/>
+    </Style>
+
     <Style TargetType="Frame" x:Key="SelectPageIconsFrame">
         <Setter Property="BorderColor" Value="#FF4040"/>
         <Setter Property="CornerRadius" Value="16"/>

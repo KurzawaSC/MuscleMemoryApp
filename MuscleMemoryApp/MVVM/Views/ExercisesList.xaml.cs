@@ -6,14 +6,12 @@ namespace MuscleMemoryApp.MVVM.Views;
 
 public partial class ExercisesList : ContentPage
 {
-    string token;
     ExerciseViewModel _viewModel;
-	public ExercisesList(string _token)
+	public ExercisesList()
 	{
 		InitializeComponent();
-		_viewModel = new ExerciseViewModel(_token);
+		_viewModel = new ExerciseViewModel();
         BindingContext = _viewModel;
-        token = _token;
     }
 
     protected override async void OnAppearing()
@@ -24,7 +22,7 @@ public partial class ExercisesList : ContentPage
 
     private async void AddButton_Clicked(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new ExerciseDetailsView("New Exercise", token));
+        await Navigation.PushAsync(new ExerciseDetailsView("New Exercise"));
     }
 
     private async void Delete_Clicked(object sender, EventArgs e)
@@ -44,7 +42,7 @@ public partial class ExercisesList : ContentPage
             Reps = int.Parse(new string(exercise.Record!.SkipWhile(x => x != 'x').Skip(1).ToArray()))
         };
 
-        await Navigation.PushAsync(new ExerciseDetailsView("Edit exercise", token,
+        await Navigation.PushAsync(new ExerciseDetailsView("Edit exercise",
             button.CommandParameter.ToString()!, updatedExercise));
     }
 }

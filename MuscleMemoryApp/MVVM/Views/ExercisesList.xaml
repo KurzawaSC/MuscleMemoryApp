@@ -5,7 +5,7 @@
              x:Class="MuscleMemoryApp.MVVM.Views.ExercisesList"
              Title="ExercisesList"
              NavigationPage.HasNavigationBar="False">
-    <Grid RowDefinitions=".1*, .8*, .1*" BackgroundColor="White">
+    <Grid RowDefinitions=".1*, .9*" BackgroundColor="White">
         <BoxView Style="{StaticResource HeaderBoxView}" />
         <Label Style="{StaticResource HeaderLabel}"/>
 
@@ -40,16 +40,16 @@
 
         <Button Grid.Row="1" Style="{StaticResource AddButton}" Clicked="AddButton_Clicked"/>
 
-        <Frame Style="{StaticResource SelectPageIconsFrame}" Grid.Row="2" />
+        <!--<Frame Style="{StaticResource SelectPageIconsFrame}" Grid.Row="2" />
         <Grid Grid.Row="2" ColumnDefinitions="*,*,*">
-            <Image Grid.Column="0" Source="notebook.png" Style="{StaticResource SelectPageIcon}"/>
+            <Button ImageSource="notebook.png" BackgroundColor="White" Style="{StaticResource SelectPageIcon2}"/>
             <Image Grid.Column="1" Source="list.png" Style="{StaticResource SelectPageIcon}">
                 <Image.Behaviors>
                     <toolkit:IconTintColorBehavior TintColor="#FF4040"/>
                 </Image.Behaviors>
             </Image>
             <Image Grid.Column="2" Source="settings.png" Style="{StaticResource SelectPageIcon}"/>
-        </Grid>
+        </Grid>-->
 
     </Grid>
 </ContentPage>

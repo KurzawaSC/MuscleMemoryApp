@@ -11,6 +11,7 @@ public class UserDetailsViewModel
     public List<string> nationalities { get; set; }
     public RegisterRequest request { get; set; }
     public User user { get; set; }
+    App app;
 
     HttpClient client;
     JsonSerializerOptions serializerOptions;
@@ -228,6 +229,7 @@ public class UserDetailsViewModel
         request = new RegisterRequest();
         user = new User();
         repeatedPassword = string.Empty;
+        app = (App)Application.Current!;
     }
 
     public async Task RegisterUser()
@@ -240,9 +242,9 @@ public class UserDetailsViewModel
         var response = await client.PostAsync($"{baseUrl}/api/identity/register", content);
     }
 
-    public async Task EditUserInfo(string token)
+    public async Task EditUserInfo()
     {
-        client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+        client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", app.BearerToken);
 
         string json = JsonSerializer.Serialize(user, serializerOptions);
 

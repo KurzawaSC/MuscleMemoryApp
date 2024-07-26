@@ -9,11 +9,10 @@ public partial class ExerciseDetailsView : ContentPage
     ExerciseDetailsViewModel _viewModel;
     public string message { get; set; }
     public string id;
-	public ExerciseDetailsView(string _message, string _token, string _id = "None",
-        ExerciseDetails _updatedExercise = default!)
+	public ExerciseDetailsView(string _message, string _id = "None", ExerciseDetails _updatedExercise = default!)
 	{
 		InitializeComponent();
-        _viewModel = new ExerciseDetailsViewModel(_token, _message, _updatedExercise);
+        _viewModel = new ExerciseDetailsViewModel(_message, _updatedExercise);
         BindingContext = _viewModel;
         id = _id;
         message = _message;

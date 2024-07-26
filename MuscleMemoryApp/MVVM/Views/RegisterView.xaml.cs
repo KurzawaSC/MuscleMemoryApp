@@ -23,7 +23,7 @@ public partial class RegisterView : ContentPage
                 password = _viewModel.request.password
             };
             await login.LogIn();
-            await _viewModel.EditUserInfo(login.loginResponse.accessToken);
+            await _viewModel.EditUserInfo();
             await Navigation.PopAsync();
         }
         else

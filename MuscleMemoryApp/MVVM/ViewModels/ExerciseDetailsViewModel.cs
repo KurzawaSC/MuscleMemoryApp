@@ -7,22 +7,21 @@ namespace MuscleMemoryApp.MVVM.ViewModels;
 public class ExerciseDetailsViewModel
 {
     HttpClient client;
-    string token { get; set; }
     JsonSerializerOptions serializerOptions;
     string baseUrl = "https://localhost:7002";
     public ExerciseDetails _newExercise { get; set; }
     public bool hasImage = false;
     FileResult Image = default!;
     public string message { get; set; }
+    App app;
 
-    public ExerciseDetailsViewModel(string _token, string _message, ExerciseDetails newExercise = default!)
+    public ExerciseDetailsViewModel(string _message, ExerciseDetails newExercise = default!)
     {
         client = new HttpClient();
         serializerOptions = new JsonSerializerOptions()
         {
             WriteIndented = true,
         };
-        token = _token;
         if (newExercise == default)
         {
             _newExercise = new ExerciseDetails();
@@ -31,11 +30,12 @@ public class ExerciseDetailsViewModel
             _newExercise = newExercise;
         }
         message = _message;
+        app = (App)Application.Current!;
     }
 
     public async Task<string> AddExercise()
     {
-        client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+        client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", app.BearerToken);
 
         string json = JsonSerializer.Serialize(_newExercise, serializerOptions);
 
@@ -59,7 +59,7 @@ public class ExerciseDetailsViewModel
 
     public async Task UpdateExercise(string id)
     {
-        client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+        client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", app.BearerToken);
 
         string json = JsonSerializer.Serialize(_newExercise, serializerOptions);
 
@@ -90,7 +90,7 @@ public class ExerciseDetailsViewModel
 
     public async Task AddImage(string exerciseId)
     {
-        client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+        client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", app.BearerToken);
 
         var result = Image;
 

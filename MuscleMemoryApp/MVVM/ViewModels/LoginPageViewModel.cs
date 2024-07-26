@@ -14,11 +14,11 @@ public class LoginPageViewModel
 {
     public string eMail { get; set; } = string.Empty;
     public string password { get; set; } = string.Empty;
+    App app;
 
     HttpClient client;
     JsonSerializerOptions _serializerOptions;
     string baseUrl = "https://localhost:7002";
-    public LoginResponse loginResponse;
     public LoginPageViewModel()
     {
         client = new HttpClient();
@@ -26,7 +26,7 @@ public class LoginPageViewModel
         {
             WriteIndented = true,
         };
-        loginResponse = new LoginResponse();
+        app = (App)Application.Current!;
     }
 
     public async Task LogIn()
@@ -48,7 +48,12 @@ public class LoginPageViewModel
                 var data =
                 await JsonSerializer
                 .DeserializeAsync<LoginResponse>(responseStream, _serializerOptions);
+
+                var loginResponse = new LoginResponse();
                 loginResponse = data!;
+
+                app.BearerToken = loginResponse.accessToken;
+                await SecureStorage.Default.SetAsync("bearer_token", loginResponse.accessToken);
             }
         }
     }

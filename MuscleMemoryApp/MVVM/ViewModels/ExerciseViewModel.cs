@@ -9,12 +9,12 @@ namespace MuscleMemoryApp.MVVM.ViewModels;
 public class ExerciseViewModel
 {
     HttpClient client;
-    string token { get; set; }
     JsonSerializerOptions serializerOptions;
     string baseUrl = "https://localhost:7002";
     public ObservableCollection<Exercise> exercises { get; set; }
+    App app;
 
-    public ExerciseViewModel(string _token)
+    public ExerciseViewModel()
     {
         client = new HttpClient();
         serializerOptions = new JsonSerializerOptions()
@@ -22,7 +22,7 @@ public class ExerciseViewModel
             WriteIndented = true,
         };
         exercises = new ObservableCollection<Exercise>();
-        token = _token;
+        app = (App)Application.Current!;
         InitializeAsync();
     }
 
@@ -33,7 +33,7 @@ public class ExerciseViewModel
 
     public async Task GetAllExercise()
     {
-        client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+        client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", app.BearerToken);
         var response = await client.GetAsync($"{baseUrl}/api/exercises?searchPhrase=");
 
         if (response.IsSuccessStatusCode)
@@ -49,7 +49,7 @@ public class ExerciseViewModel
 
     public async Task DeleteExercise(string id)
     {
-        client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+        client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", app.BearerToken);
         var response = await client.DeleteAsync($"{baseUrl}/api/exercises/{id}");
         await GetAllExercise();
     }

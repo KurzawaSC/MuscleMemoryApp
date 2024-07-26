@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MuscleMemoryApp.MVVM.Views.TabbedView"
+             xmlns:local="clr-namespace:MuscleMemoryApp.MVVM.Views"
+            NavigationPage.HasNavigationBar="False"
+             Title="TabbedView">
+
+    <local:ExercisesList IconImageSource="list.png"/>
+    <local:SettingsView IconImageSource="settings.png"/>
+
+</TabbedPage>

@@ -10,12 +10,14 @@ public partial class LoginPage : ContentPage
 		InitializeComponent();
         _viewModel = new LoginPageViewModel();
         BindingContext = _viewModel;
-	}
+    }
 
     private async void OnSomeEvent(object sender, EventArgs e)
     {
         await _viewModel.LogIn();
-        await Navigation.PushAsync(new ExercisesList(_viewModel.loginResponse.accessToken));
+        _viewModel.eMail = string.Empty;
+        _viewModel.password = string.Empty;
+        await Navigation.PushAsync(new TabbedView());
     }
 
     private void Sign_In(object sender, EventArgs e)

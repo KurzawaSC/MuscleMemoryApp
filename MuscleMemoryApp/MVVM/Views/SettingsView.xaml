@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="MuscleMemoryApp.MVVM.Views.SettingsView"
+             Title="SettingsView"
+             NavigationPage.HasNavigationBar="False">
+    
+<Grid RowDefinitions=".1*, .9*" BackgroundColor="White">
+    <BoxView Style="{StaticResource HeaderBoxView}" />
+    <Label Style="{StaticResource HeaderLabel}"/>
+
+        <VerticalStackLayout Grid.Row="1">
+            <Button Text="User settings" Style="{StaticResource SettingsButton}" Clicked="UserDetails_Clicked"/>
+            <!--<HorizontalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                <Label Text="Dark mode" FontFamily="CommnonFont" FontAttributes="Bold" FontSize="20"
+                       HorizontalOptions="Center" VerticalOptions="Center" Padding="100,0,20,0"/>
+                <Switch HorizontalOptions="Center" VerticalOptions="Center"
+                        OnColor="#FF4040" ThumbColor="#FF4040"/>
+            </HorizontalStackLayout>-->
+            <Button Text="Log out" Style="{StaticResource SettingsButton}" Clicked="LogOut_Clicked"/>
+        </VerticalStackLayout>
+
+
+    <!--<Frame Style="{StaticResource SelectPageIconsFrame}" Grid.Row="2" />
+    <Grid Grid.Row="2" ColumnDefinitions="*,*,*">
+        <Image Grid.Column="0" Source="notebook.png" Style="{StaticResource SelectPageIcon}"/>
+        <Image Grid.Column="1" Source="list.png" Style="{StaticResource SelectPageIcon}"/>
+            <Image Grid.Column="2" Source="settings.png" Style="{StaticResource SelectPageIcon}">
+                <Image.Behaviors>
+                    <toolkit:IconTintColorBehavior TintColor="#FF4040"/>
+                </Image.Behaviors>
+            </Image>
+    </Grid>-->
+
+</Grid>
+</ContentPage>
