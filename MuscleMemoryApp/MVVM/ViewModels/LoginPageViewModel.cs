@@ -18,7 +18,6 @@ public class LoginPageViewModel
 
     HttpClient client;
     JsonSerializerOptions _serializerOptions;
-    string baseUrl = "https://localhost:7002";
     public LoginPageViewModel()
     {
         client = new HttpClient();
@@ -29,15 +28,14 @@ public class LoginPageViewModel
         app = (App)Application.Current!;
     }
 
-    public async Task LogIn()
+    public async Task<bool> LogIn()
     {
-        var url = $"{baseUrl}/api/identity/login";
+        var url = $"{app.baseUrl}/api/identity/login";
         var loginRequest = new LoginRequest(eMail, password);
 
         string json = JsonSerializer.Serialize<LoginRequest>(loginRequest, _serializerOptions);
 
         StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
-
         var response = await client.PostAsync(url, content);
 
         if (response.IsSuccessStatusCode)
@@ -54,7 +52,19 @@ public class LoginPageViewModel
 
                 app.BearerToken = loginResponse.accessToken;
                 await SecureStorage.Default.SetAsync("bearer_token", loginResponse.accessToken);
+                return true;
             }
+        }
+        else if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
+        {
+            app.BearerToken = null;
+            await app.MainPage!.DisplayAlert("Wrong data", "", "OK");
+            return false;
+        }
+        else
+        {
+            await app.MainPage!.DisplayAlert("Something went wrong", "", "OK");
+            return false;
         }
     }
 }

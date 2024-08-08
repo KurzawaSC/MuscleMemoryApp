@@ -15,7 +15,6 @@ public class UserDetailsViewModel
 
     HttpClient client;
     JsonSerializerOptions serializerOptions;
-    string baseUrl = "https://localhost:7002";
     public string repeatedPassword { get; set; }
 
     public UserDetailsViewModel()
@@ -239,7 +238,18 @@ public class UserDetailsViewModel
         StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
 
 
-        var response = await client.PostAsync($"{baseUrl}/api/identity/register", content);
+        var response = await client.PostAsync($"{app.baseUrl}/api/identity/register", content);
+        if (response.IsSuccessStatusCode) { }
+        else if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
+        {
+            app.BearerToken = null;
+            await app.MainPage!.DisplayAlert("Something went wrong", "Unauthorized", "OK");
+            app.Quit();
+        }
+        else
+        {
+            await app.MainPage!.DisplayAlert("Something went wrong", "", "OK");
+        }
     }
 
     public async Task EditUserInfo()
@@ -250,6 +260,17 @@ public class UserDetailsViewModel
 
         StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
 
-        var response = await client.PatchAsync($"{baseUrl}/api/identity", content);
+        var response = await client.PatchAsync($"{app.baseUrl}/api/identity", content);
+        if (response.IsSuccessStatusCode) { }
+        else if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
+        {
+            app.BearerToken = null;
+            await app.MainPage!.DisplayAlert("Something went wrong", "Unauthorized", "OK");
+            app.Quit();
+        }
+        else
+        {
+            await app.MainPage!.DisplayAlert("Something went wrong", "", "OK");
+        }
     }
 }

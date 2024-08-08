@@ -10,7 +10,6 @@ public class ExerciseViewModel
 {
     HttpClient client;
     JsonSerializerOptions serializerOptions;
-    string baseUrl = "https://localhost:7002";
     public ObservableCollection<Exercise> exercises { get; set; }
     App app;
 
@@ -34,7 +33,7 @@ public class ExerciseViewModel
     public async Task GetAllExercise()
     {
         client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", app.BearerToken);
-        var response = await client.GetAsync($"{baseUrl}/api/exercises?searchPhrase=");
+        var response = await client.GetAsync($"{app.baseUrl}/api/exercises?searchPhrase=");
 
         if (response.IsSuccessStatusCode)
         {
@@ -45,12 +44,35 @@ public class ExerciseViewModel
                 exercises = data!;
             }
         }
+        else if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
+        {
+            app.BearerToken = null;
+            await app.MainPage!.DisplayAlert("Something went wrong", "Unauthorized", "OK");
+            app.Quit();
+        }
+        else
+        {
+            await app.MainPage!.DisplayAlert("Something went wrong", "", "OK");
+        }
     }
 
     public async Task DeleteExercise(string id)
     {
         client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", app.BearerToken);
-        var response = await client.DeleteAsync($"{baseUrl}/api/exercises/{id}");
-        await GetAllExercise();
+        var response = await client.DeleteAsync($"{app.baseUrl}/api/exercises/{id}");
+        if (response.IsSuccessStatusCode)
+        {
+            await GetAllExercise();
+        }
+        else if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
+        {
+            app.BearerToken = null;
+            await app.MainPage!.DisplayAlert("Something went wrong", "Unauthorized", "OK");
+            app.Quit();
+        }
+        else
+        {
+            await app.MainPage!.DisplayAlert("Something went wrong", "", "OK");
+        }
     }
 }

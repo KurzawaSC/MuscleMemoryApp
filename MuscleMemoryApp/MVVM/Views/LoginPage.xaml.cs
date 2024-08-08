@@ -14,10 +14,13 @@ public partial class LoginPage : ContentPage
 
     private async void OnSomeEvent(object sender, EventArgs e)
     {
-        await _viewModel.LogIn();
-        _viewModel.eMail = string.Empty;
-        _viewModel.password = string.Empty;
-        await Navigation.PushAsync(new TabbedView());
+        var isSuccess = await _viewModel.LogIn();
+        if (isSuccess)
+        {
+            _viewModel.eMail = string.Empty;
+            _viewModel.password = string.Empty;
+            await Navigation.PushAsync(new TabbedView());
+        }
     }
 
     private void Sign_In(object sender, EventArgs e)

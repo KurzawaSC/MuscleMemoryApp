@@ -8,7 +8,6 @@ public class ExerciseDetailsViewModel
 {
     HttpClient client;
     JsonSerializerOptions serializerOptions;
-    string baseUrl = "https://localhost:7002";
     public ExerciseDetails _newExercise { get; set; }
     public bool hasImage = false;
     FileResult Image = default!;
@@ -42,7 +41,7 @@ public class ExerciseDetailsViewModel
         StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
 
 
-        var response = await client.PostAsync($"{baseUrl}/api/exercises", content);
+        var response = await client.PostAsync($"{app.baseUrl}/api/exercises", content);
         if (response.IsSuccessStatusCode)
         {
             var locationHeader = response.Headers.Location;
@@ -53,6 +52,16 @@ public class ExerciseDetailsViewModel
                 var id = uri.Split('/').Last();
                 return id;
             }
+        }
+        else if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
+        {
+            app.BearerToken = null;
+            await app.MainPage!.DisplayAlert("Something went wrong", "Unauthorized", "OK");
+            app.Quit();
+        }
+        else
+        {
+            await app.MainPage!.DisplayAlert("Something went wrong", "", "OK");
         }
         return default!;
     }
@@ -65,7 +74,19 @@ public class ExerciseDetailsViewModel
 
         StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
 
-        var response = await client.PatchAsync($"{baseUrl}/api/exercises/{id}", content);
+        var response = await client.PatchAsync($"{app.baseUrl}/api/exercises/{id}", content);
+
+        if (response.IsSuccessStatusCode) { }
+        else if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
+        {
+            app.BearerToken = null;
+            await app.MainPage!.DisplayAlert("Something went wrong", "Unauthorized", "OK");
+            app.Quit();
+        }
+        else
+        {
+            await app.MainPage!.DisplayAlert("Something went wrong", "", "OK");
+        }
     }
 
 
@@ -111,11 +132,21 @@ public class ExerciseDetailsViewModel
 
         content.Add(imageContent, "image");
 
-        var response = await client.PostAsync($"{baseUrl}/api/exercises/{exerciseId}/picture", content);
-        if (!response.IsSuccessStatusCode)
+        var response = await client.PostAsync($"{app.baseUrl}/api/exercises/{exerciseId}/picture", content);
+        if (response.IsSuccessStatusCode)
+        {
+            
+        }
+        else if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
+        {
+            app.BearerToken = null;
+            await app.MainPage!.DisplayAlert("Something went wrong", "Unauthorized", "OK");
+            app.Quit();
+        }
+        else
         {
             var errorMessage = await response.Content.ReadAsStringAsync();
-            throw new Exception($"Failed to upload image: {errorMessage}");
+            await app.MainPage!.DisplayAlert("Something went wrong", "", "OK");
         }
     }
 
