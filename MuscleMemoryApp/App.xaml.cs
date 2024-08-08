@@ -9,7 +9,7 @@ namespace MuscleMemoryApp
         public App()
         {
             baseUrl = DeviceInfo.Platform == DevicePlatform.Android
-                ? "http://ipv4:7002" : "https://localhost:7002";
+                ? "http://IPV4:7002" : "https://localhost:7002";
             InitializeComponent();
             MainPage = new NavigationPage(new LoginPage());
             RetriveToken(MainPage);
